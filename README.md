@@ -2,11 +2,11 @@
 
 ## Overview
 
-This project examines the employment effects of the introduction of the UK National Living Wage (NLW) in April 2016.
+This project examines the employment effects of the introduction of the UK National Living Wage (NLW), announced in July 2015 and introduced in April 2016 for workers aged 25 and over.
 
-The analysis exploits differences in pre-policy exposure to the NLW across industries. Industries with a larger share of workers earning below the new wage threshold before the reform were more strongly affected by its introduction.
+The analysis exploits differences in pre-policy exposure to the NLW across industries. Industries with a larger share of employees aged 25+ earning below the future £7.20 wage floor before its introduction were more strongly exposed to the reform.
 
-Using quarterly industry-level employment data, the project applies a continuous difference-in-differences framework and an event-study specification to estimate how employment evolved in more versus less exposed industries following the introduction of the NLW.
+Using quarterly industry-level employment data from 2012 to 2019, the project applies a continuous difference-in-differences framework and an event-study specification to examine whether employment evolved differently in industries with greater pre-policy exposure to the NLW.
 
 ## Research Question
 
@@ -16,17 +16,23 @@ Did the introduction of the UK National Living Wage affect employment differentl
 
 The analysis combines two main datasets:
 
-- Quarterly employee jobs by industry from the UK Office for National Statistics (ONS).
-- Industry-level exposure to the National Living Wage, measured as the proportion of employees aged 25+ paid below the NLW before its introduction.
+- Quarterly seasonally adjusted employee jobs by industry from the UK Office for National Statistics (ONS).
+- Industry-level NLW exposure from ONS, measured as the share of employees aged 25+ paid below the future NLW before its introduction.
 
-The main sample covers 19 SIC 2007 industry sections from 2012 to 2019.
+The main sample contains 19 SIC 2007 industry sections observed quarterly from 2012Q1 to 2019Q4, giving 608 industry-quarter observations.
 
 ## Empirical Strategy
 
-The main analysis uses variation in industry-level exposure to the National Living Wage.
+The baseline specification uses a continuous difference-in-differences design, interacting pre-policy NLW exposure with an indicator for the post-reform period while controlling for industry and quarter fixed effects.
 
-The baseline specification follows a continuous difference-in-differences design, interacting pre-policy NLW exposure with a post-reform indicator.
+An event-study specification allows the relationship between exposure and employment to vary by quarter around the reform. This is used both to examine the dynamics of employment following the NLW and to assess whether differential employment trends were already present before its introduction.
 
-An event-study specification is then used to examine employment dynamics around the introduction of the NLW and assess pre-treatment trends.
+Standard errors are clustered at the industry level.
 
 ## Repository Structure
+
+- `data/raw/` — original ONS employment and NLW exposure data
+- `data/processed/` — cleaned industry-quarter panel used in the analysis
+- `R/` — data cleaning, descriptive analysis, causal models, event study and robustness scripts
+- `figures/` — figures produced by the analysis
+- `tables/` — regression and summary tables
