@@ -1,0 +1,2 @@
+specification,estimate,statistic,p_value,conf_low,conf_high,observations,clusters
+Baseline: wild cluster bootstrap,0.018798182985053,1.1830213642900471,0.41244124412441246,-0.06655694449898589,0.08472942897855713,608,19

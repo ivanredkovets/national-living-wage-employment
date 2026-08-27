@@ -68,7 +68,6 @@ short_window_model <- feols(
 
 summary(short_window_model)
 
-confint(short_window_model)
 
 # ------------------------------------------------------------
 # 4. Robustness: exclude Accommodation & Food
@@ -93,8 +92,6 @@ no_accom_model <- feols(
 
 summary(no_accom_model)
 
-confint(no_accom_model)
-
 # ------------------------------------------------------------
 # 5. Robustness: industry-specific linear trends
 # ------------------------------------------------------------
@@ -108,9 +105,6 @@ panel_trends <- panel_model %>%
     ))
   )
 
-panel_trends %>%
-  distinct(quarter_date, time_trend) %>%
-  arrange(quarter_date)
 
 trends_model <- feols(
   log_jobs ~ exposure_10pp:post + i(industry, time_trend) |
@@ -132,8 +126,6 @@ industry_weights <- panel_model %>%
     employment_weight = employee_jobs
   )
 
-industry_weights %>%
-  arrange(desc(employment_weight))
 
 panel_weighted <- panel_model %>%
   left_join(
@@ -141,9 +133,6 @@ panel_weighted <- panel_model %>%
     by = "industry"
   )
 
-panel_weighted %>%
-  distinct(industry, employment_weight) %>%
-  arrange(desc(employment_weight))
 
 weighted_model <- feols(
   log_jobs ~ exposure_10pp:post | industry + quarter_date,
